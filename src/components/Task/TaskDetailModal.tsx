@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import {
   IonModal,
+  IonHeader,
+  IonToolbar,
+  IonContent,
+  IonFooter,
   IonIcon,
   IonCheckbox,
   IonProgressBar,
@@ -10,6 +14,7 @@ import {
   closeOutline,
   pencilOutline,
   calendarOutline,
+  trashOutline,
   chevronDownOutline,
   addOutline,
   imageOutline,
@@ -82,32 +87,34 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({ isOpen, task, onClose
       <IonModal
         isOpen={isOpen}
         onDidDismiss={onClose}
-        breakpoints={[0.5, 0.95]}
-        initialBreakpoint={0.95}
         style={{ '--border-radius': '12px' }}
       >
-        <div className="h-full bg-white flex flex-col overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-[#E5E7EB] shrink-0">
-            <button
-              onClick={() => setIsComplete(!isComplete)}
-              className="flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] rounded-md text-sm text-[#374151] hover:bg-[#E5E7EB] transition-colors"
-            >
-              <IonCheckbox
-                checked={isComplete}
-                onIonChange={(e) => setIsComplete(e.detail.checked)}
-                className="pointer-events-none"
-              />
-              <span>Mark Complete</span>
-            </button>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-[#F3F4F6] rounded-md transition-colors"
-            >
-              <IonIcon icon={closeOutline} className="text-2xl text-[#9CA3AF]" />
-            </button>
-          </div>
+        <IonHeader className="ion-no-border">
+          <IonToolbar style={{ '--background': 'white' }}>
+            <div className="flex items-center justify-between px-6 py-2">
+              <button
+                onClick={() => setIsComplete(!isComplete)}
+                className="flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] rounded-md text-sm text-[#374151] hover:bg-[#E5E7EB] transition-colors"
+              >
+                <IonCheckbox
+                  checked={isComplete}
+                  onIonChange={(e) => setIsComplete(e.detail.checked)}
+                  className="pointer-events-none"
+                />
+                <span>Mark Complete</span>
+              </button>
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-[#F3F4F6] rounded-md transition-colors"
+              >
+                <IonIcon icon={closeOutline} className="text-2xl text-[#9CA3AF]" />
+              </button>
+            </div>
+          </IonToolbar>
+        </IonHeader>
 
-          <div className="flex-1 overflow-y-auto px-6 py-6">
+        <IonContent className="ion-padding" style={{ '--background': 'white' }}>
+          <div className="px-2 py-2">
             {task.coverImage ? (
               <img
                 src={task.coverImage}
@@ -301,22 +308,35 @@ const TaskDetailModal: React.FC<TaskDetailModalProps> = ({ isOpen, task, onClose
               </div>
             </div>
           </div>
+        </IonContent>
 
-          <div className="flex justify-end gap-3 px-6 py-4 border-t border-[#E5E7EB] shrink-0">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 bg-[#F3F4F6] text-[#374151] rounded-md text-sm font-medium hover:bg-[#E5E7EB] transition-colors"
-            >
-              Discard
-            </button>
-            <button
-              onClick={() => onEdit(task)}
-              className="px-4 py-2 bg-[#3B82F6] text-white rounded-md text-sm font-medium hover:bg-[#2563EB] transition-colors"
-            >
-              Save
-            </button>
-          </div>
-        </div>
+        <IonFooter className="ion-no-border" style={{ background: 'white' }}>
+          <IonToolbar style={{ '--background': 'white' }}>
+            <div className="flex items-center justify-between px-6 py-2">
+              <button
+                onClick={() => setShowDeleteAlert(true)}
+                className="flex items-center gap-1.5 px-4 py-2 bg-red-50 text-red-600 rounded-md text-sm font-medium hover:bg-red-100 transition-colors"
+              >
+                <IonIcon icon={trashOutline} className="text-base" />
+                Delete
+              </button>
+              <div className="flex gap-3">
+                <button
+                  onClick={onClose}
+                  className="px-4 py-2 bg-[#F3F4F6] text-[#374151] rounded-md text-sm font-medium hover:bg-[#E5E7EB] transition-colors"
+                >
+                  Discard
+                </button>
+                <button
+                  onClick={() => onEdit(task)}
+                  className="px-4 py-2 bg-[#3B82F6] text-white rounded-md text-sm font-medium hover:bg-[#2563EB] transition-colors"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </IonToolbar>
+        </IonFooter>
       </IonModal>
 
       <IonAlert

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {
   IonModal,
+  IonHeader,
+  IonToolbar,
+  IonContent,
+  IonFooter,
   IonDatetime,
   IonIcon,
 } from '@ionic/react';
@@ -135,21 +139,23 @@ const TaskFormModal: React.FC<TaskFormModalProps> = ({ isOpen, task, defaultColu
       <IonModal
         isOpen={isOpen}
         onDidDismiss={onClose}
-        breakpoints={[0.5, 0.95]}
-        initialBreakpoint={0.95}
         style={{ '--border-radius': '12px' }}
       >
-        <div className="h-full bg-white flex flex-col overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-[#E5E7EB] shrink-0">
-            <h2 className="text-lg font-semibold text-[#1F2937]">
-              {isEditMode ? 'Edit Task' : 'Create Task'}
-            </h2>
-            <button onClick={onClose} className="p-2 hover:bg-[#F3F4F6] rounded-md transition-colors">
-              <IonIcon icon={closeOutline} className="text-2xl text-[#9CA3AF]" />
-            </button>
-          </div>
+        <IonHeader className="ion-no-border">
+          <IonToolbar style={{ '--background': 'white' }}>
+            <div className="flex items-center justify-between px-6 py-2">
+              <h2 className="text-lg font-semibold text-[#1F2937]">
+                {isEditMode ? 'Edit Task' : 'Create Task'}
+              </h2>
+              <button onClick={onClose} className="p-2 hover:bg-[#F3F4F6] rounded-md transition-colors">
+                <IonIcon icon={closeOutline} className="text-2xl text-[#9CA3AF]" />
+              </button>
+            </div>
+          </IonToolbar>
+        </IonHeader>
 
-          <div className="flex-1 overflow-y-auto px-6 py-6">
+        <IonContent className="ion-padding" style={{ '--background': 'white' }}>
+          <div className="px-2 py-2">
             <div className="mb-6">
               {coverImage ? (
                 <div className="relative">
@@ -321,22 +327,26 @@ const TaskFormModal: React.FC<TaskFormModalProps> = ({ isOpen, task, defaultColu
 
             <ChecklistSection subtasks={subtasks} onChange={setSubtasks} />
           </div>
+        </IonContent>
 
-          <div className="flex justify-end gap-3 px-6 py-4 border-t border-[#E5E7EB] shrink-0">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 bg-[#F3F4F6] text-[#374151] rounded-md text-sm font-medium hover:bg-[#E5E7EB] transition-colors"
-            >
-              Discard
-            </button>
-            <button
-              onClick={handleSave}
-              className="px-4 py-2 bg-[#3B82F6] text-white rounded-md text-sm font-medium hover:bg-[#2563EB] transition-colors"
-            >
-              Save
-            </button>
-          </div>
-        </div>
+        <IonFooter className="ion-no-border" style={{ background: 'white' }}>
+          <IonToolbar style={{ '--background': 'white' }}>
+            <div className="flex justify-end gap-3 px-6 py-2">
+              <button
+                onClick={onClose}
+                className="px-4 py-2 bg-[#F3F4F6] text-[#374151] rounded-md text-sm font-medium hover:bg-[#E5E7EB] transition-colors"
+              >
+                Discard
+              </button>
+              <button
+                onClick={handleSave}
+                className="px-4 py-2 bg-[#3B82F6] text-white rounded-md text-sm font-medium hover:bg-[#2563EB] transition-colors"
+              >
+                Save
+              </button>
+            </div>
+          </IonToolbar>
+        </IonFooter>
       </IonModal>
 
       <IonModal isOpen={showDatePicker} onDidDismiss={() => setShowDatePicker(false)}>
