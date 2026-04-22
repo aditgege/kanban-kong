@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root,
+:root.md,
+:root.ios,
+body,
+body.dark,
+.ios body,
+.md body {
+  --ion-background-color: #FFFFFF;
+  --ion-background-color-rgb: 255, 255, 255;
+  --ion-text-color: #1F2937;
+  --ion-text-color-rgb: 31, 41, 55;
+  --ion-toolbar-background: #FFFFFF;
+  --ion-item-background: #FFFFFF;
+  --ion-card-background: #FFFFFF;
+  --ion-overlay-background-color: #FFFFFF;
+  --ion-backdrop-color: #000000;
+  --ion-backdrop-opacity: 0.4;
+  --ion-border-color: #E5E7EB;
+  --ion-color-step-50: #f2f2f2;
+  --ion-color-step-100: #e6e6e6;
+  --ion-color-step-150: #d9d9d9;
+  --ion-color-step-200: #cccccc;
+  --ion-color-step-250: #bfbfbf;
+  --ion-color-step-300: #b3b3b3;
+  --ion-color-step-350: #a6a6a6;
+  --ion-color-step-400: #999999;
+  --ion-color-step-450: #8c8c8c;
+  --ion-color-step-500: #808080;
+  --ion-color-step-550: #737373;
+  --ion-color-step-600: #666666;
+  --ion-color-step-650: #595959;
+  --ion-color-step-700: #4d4d4d;
+  --ion-color-step-750: #404040;
+  --ion-color-step-800: #333333;
+  --ion-color-step-850: #262626;
+  --ion-color-step-900: #191919;
+  --ion-color-step-950: #0d0d0d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root,
+  :root.md,
+  :root.ios,
+  body,
+  body.dark,
+  .ios body,
+  .md body {
+    --ion-background-color: #F5F7FA;
+    --ion-background-color-rgb: 245, 247, 250;
+    --ion-text-color: #1F2937;
+    --ion-text-color-rgb: 31, 41, 55;
+    --ion-toolbar-background: #FFFFFF;
+    --ion-item-background: #FFFFFF;
+    --ion-card-background: #FFFFFF;
+    --ion-overlay-background-color: #FFFFFF;
+    --ion-border-color: #E5E7EB;
+    --ion-color-step-50: #f2f2f2;
+    --ion-color-step-100: #e6e6e6;
+    --ion-color-step-150: #d9d9d9;
+    --ion-color-step-200: #cccccc;
+    --ion-color-step-250: #bfbfbf;
+    --ion-color-step-300: #b3b3b3;
+    --ion-color-step-350: #a6a6a6;
+    --ion-color-step-400: #999999;
+    --ion-color-step-450: #8c8c8c;
+    --ion-color-step-500: #808080;
+    --ion-color-step-550: #737373;
+    --ion-color-step-600: #666666;
+    --ion-color-step-650: #595959;
+    --ion-color-step-700: #4d4d4d;
+    --ion-color-step-750: #404040;
+    --ion-color-step-800: #333333;
+    --ion-color-step-850: #262626;
+    --ion-color-step-900: #191919;
+    --ion-color-step-950: #0d0d0d;
+  }
+}
+
+ion-content {
+  --background: #FFFFFF;
+}
+
+ion-modal {
+  --background: #FFFFFF;
+}
+
+ion-datetime {
+  --background: #FFFFFF;
+  color: #1F2937;
+}
+
+@theme {
+  --color-board-bg: #FFFFFF;
+  --color-column-bg: #FFFFFF;
+  --color-card-bg: #EAF2F5;
+  --color-primary-blue: #4A90E2;
+  --color-text-primary: #1F2937;
+  --color-text-secondary: #6B7280;
+  --color-text-muted: #9CA3AF;
+  --color-input-bg: #F0F4F8;
+  --color-border: #E5E7EB;
+
+  --color-label-feature-bg: #E3F2FD;
+  --color-label-feature: #1976D2;
+  --color-label-bug-bg: #FFEBEE;
+  --color-label-bug: #D32F2F;
+  --color-label-issue-bg: #FFF3E0;
+  --color-label-issue: #F57C00;
+  --color-label-undefined-bg: #ECEFF1;
+  --color-label-undefined: #546E7A;
+
+  --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-card-drag: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
